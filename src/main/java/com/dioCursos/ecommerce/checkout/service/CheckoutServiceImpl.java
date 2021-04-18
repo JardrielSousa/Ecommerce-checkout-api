@@ -1,22 +1,32 @@
 package com.dioCursos.ecommerce.checkout.service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 
 import com.dioCursos.ecommerce.checkout.entity.CheckoutEntity;
+import com.dioCursos.ecommerce.checkout.enums.StatusCheckoutEnum;
 import com.dioCursos.ecommerce.checkout.repository.CheckoutRepository;
 import com.dioCursos.ecommerce.checkout.resource.checkout.CheckoutRequest;
 
-import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
+import lombok.RequiredArgsConstructor;
+
 
 @Service
+@RequiredArgsConstructor
 public class CheckoutServiceImpl implements CheckoutService{
 	
 	private final CheckoutRepository checkoutRepository;
-
+	
 	@Override
 	public Optional<CheckoutEntity> create(CheckoutRequest checkoutRequest) {
-		// TODO Auto-generated method stub
-		return null;
+		final CheckoutEntity checkoutEntity = CheckoutEntity.builder()
+				.code(UUID.randomUUID().toString())
+				.status(StatusCheckoutEnum.CREATED)
+				.build();
+		return Optional.of(checkoutRepository.save(checkoutEntity));
 	}
+
 
 }

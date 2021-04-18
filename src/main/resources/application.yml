@@ -1,3 +1,5 @@
+server:
+  contextPath: /swagger2-demo
 spring:
     datasource:
         driverClassName: org.h2.Driver
@@ -6,4 +8,5 @@ spring:
         username: sa
     jpa:
         database-platform: org.hibernate.dialect.H2Dialect
+
         

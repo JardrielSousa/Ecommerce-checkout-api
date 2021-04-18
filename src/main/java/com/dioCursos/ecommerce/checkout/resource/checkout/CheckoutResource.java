@@ -27,5 +27,5 @@ public class CheckoutResource {
 				.build();
 		return ResponseEntity.status(HttpStatus.CREATED).body(checkoutResponse);
 	}
-
+	
 }

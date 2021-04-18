@@ -16,16 +16,14 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/v1/checkout")
 @RequiredArgsConstructor
 public class CheckoutResource {
-	
+
 	private final CheckoutService checkoutService;
-	
+
 	@PostMapping("/")
-	public ResponseEntity<CheckoutResponse> create(@RequestBody CheckoutRequest checkoutRequest){
+	public ResponseEntity<CheckoutResponse> create(@RequestBody CheckoutRequest checkoutRequest) {
 		final CheckoutEntity checkoutEntity = checkoutService.create(checkoutRequest).orElseThrow();
-		final CheckoutResponse checkoutResponse = CheckoutResponse.builder()
-				.code(checkoutEntity.getCode())
-				.build();
+		final CheckoutResponse checkoutResponse = CheckoutResponse.builder().code(checkoutEntity.getCode()).build();
 		return ResponseEntity.status(HttpStatus.CREATED).body(checkoutResponse);
 	}
-	
+
 }

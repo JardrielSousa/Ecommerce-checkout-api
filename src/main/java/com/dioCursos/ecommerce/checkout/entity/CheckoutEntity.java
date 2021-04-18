@@ -9,12 +9,16 @@ import javax.persistence.Id;
 
 import com.dioCursos.ecommerce.checkout.enums.StatusCheckoutEnum;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class CheckoutEntity {
 	@Id
 	@GeneratedValue
